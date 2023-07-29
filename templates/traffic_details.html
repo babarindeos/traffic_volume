@@ -1,0 +1,84 @@
+{% load static %}
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Other head elements -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <title>Traffic Volume Detection Using Wireless Sensor Network</title>
+</head>
+<body>
+    <div class="flex flex-col bg-blue-500 text-white py-5 justify-center items-center"
+         style="background: url('https://www.digi.com/getattachment/applications/traffic-management/background.jpg');"
+         >
+        <div class="flex w-full mt-10 bg-blue-400 opacity-30 py-3 justify-center">
+            <h1 class="text-4xl text-white">
+                Traffic Volume Detection Using Wireless Sensor Network
+            </h1>
+        </div>        
+    </div>
+
+    <div class="flex flex-col container border-0 justify-center items-center py-10">
+            <div class="flex flex-col w-3/4 border-b">
+                    <div class="flex flex-row justify-between">
+                            <div>
+                                    <h1 class="text-2xl">Traffic Information</h1>
+                            </div>
+                            <div>
+                                   <a class='font-semibold underline text-blue-600' href="{% url 'home' %}">Home</a> | 
+                                   <a class='font-semibold underline text-blue-600' href="{% url 'basestation' %}">Base station</a>
+
+                            </div>                         
+                    </div>
+
+            </div>
+
+            <!-- content -->
+           
+            <div class="border-0 w-3/4 mt-3">
+                <div class="mt-5 mb-5">
+                    <strong>Traffic reference: </strong>{{ sim_identifier }}
+                    <div><strong>Traffic Volume:  </strong>{{  traffic.count }}</div>
+                </div>
+                <table width="100%" cellpadding="10px">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="text-left border-0 border-blue-800" width="7%">SN</th>
+                            <th class="text-left border-0 border-blue-800" width="20%">Location</th>
+                            <th class="text-left border-0 border-blue-800" width="15%">Cluster</th>
+                            <th class="text-left border-0 border-blue-800" width="10%">HeadNode</th>
+                            <th class="text-left border-0 border-blue-800" width="10%">Vehicle</th>                           
+                            <th class="text-left border-0 border-blue-800" width="15%">Date Created</th>
+                            
+                        </tr>                    
+                    </thead>
+                    <tbody> 
+                        {% for tr in traffic reversed %}
+                            <tr class="border-b">    
+                                <td class="text-center">{{ forloop.counter }}.</td>
+                                <td>{{ tr.location }}</td>
+                                <td>{{ tr.cluster }}</td>
+                                <td>{{ tr.headnode }}</td>
+                                <td>{{ tr.vehicle }}</td>
+                                <td>{{ tr.date }}</td>
+                            </tr>    
+                        
+                        {%  endfor  %}
+    
+                    </tbody>
+                    
+                </table>
+                 
+            </div>
+
+            <!-- end of content -->
+
+            
+    </div>
+
+    
+    
+</body>
+</html>

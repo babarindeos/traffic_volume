@@ -1,0 +1,64 @@
+{% load static %}
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Volume Detection Using Wireless Sensor Network</title>
+    <!-- Other head elements -->
+    <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            laravel: "#ef3b2d",
+                        },
+                    },
+                },
+            };
+    </script>
+    
+</head>
+<body>
+    <div class="flex flex-col bg-blue-500 text-white p-5 justify-center items-center ">
+        <div class="mt-10">
+            <h1 class="text-4xl hover:text-yellow-100">
+                Traffic Volume Detection Using Wireless Sensor Network
+            </h1>
+        </div>      
+    </div>
+
+    <div class="mx-auto w-[35%] mt-10">
+            <h1 class="text-3xl">Sign In</h1>
+    </div>
+    <div class="flex flex-col border rounded-lg mt-3 w-[35%] mx-auto py-10 px-10">
+            {% for message in messages %}
+            <div class="py-2 text-red-600 font-semibold">
+                {{ message }}
+            </div>
+            {% endfor %}
+            
+            <form action="{% url 'login' %}" method="POST" class="w-full border-0">
+                    {% csrf_token %}
+                    <div class="flex flex-col border-1 border-blue-500">  
+                        <label for="username" class="text-sm py-1 px-1">Username</label> 
+                        <input type="text" class="rounded-lg py-3 px-4 border border-gray-400" name="username" />                                                         
+                    </div>
+
+                    <div class="flex flex-col mt-3">  
+                        <label for="password" class="text-sm py-1 px-1">Password</label> 
+                        <input type="password" name="password" class="border border-gray-400 rounded-lg py-3 px-4" />                                                         
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-blue-500 mt-4 py-2 px-4 text-white rounded-md hover:bg-blue-400" value="Sign In"/> Sign In </button>
+                    </div> 
+                    
+                    
+                    
+            </form>
+    </div>
+    
+</body>
+</html>

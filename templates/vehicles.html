@@ -1,0 +1,89 @@
+{% load static %}
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Other head elements -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <title>Traffic Volume Detection Using Wireless Sensor Network</title>
+</head>
+<body>
+    <div class="flex flex-col bg-blue-500 text-white py-5 justify-center items-center"
+         style="background: url('https://www.digi.com/getattachment/applications/traffic-management/background.jpg');"
+         >
+        <div class="flex w-full mt-10 bg-blue-400 opacity-30 py-3 justify-center">
+            <h1 class="text-4xl text-white">
+                Traffic Volume Detection Using Wireless Sensor Network
+            </h1>
+        </div>        
+    </div>
+
+    <div class="flex flex-col container border-0 justify-center items-center py-10">
+            <div class="flex flex-col w-3/4 border-b">
+                    <div class="flex flex-row justify-between">
+                            <div>
+                                    <h1 class="text-2xl">Vehicles</h1>
+                            </div>
+                            <div>
+                                   <a class='font-semibold underline text-blue-600' href="home">Home</a> | 
+                                   <a class='font-semibold underline text-blue-600' href="register_vehicle">Register Vehicle</a>
+                            </div>                         
+                    </div>
+
+            </div>
+
+            <!-- content -->
+            
+            <div class="border w-3/4 mt-3">
+                <table width="100%" cellpadding="10px">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="text-left border-0 border-blue-800" width="7%">SN</th>
+                            <th class="text-left border-0 border-blue-800" width="15%">Make</th>
+                            <th class="text-left border-0 border-blue-800" width="15%">Model</th>
+                            <th class="text-left border-0 border-blue-800" width="15%">Color</th>
+                            <th class="text-left border-0 border-blue-800" width="15%">Plate No.</th>
+                            <th class="text-left border-0 border-blue-800" width="20%">Owner</th>
+                            <th class="text-left border-0 border-blue-800" width="15%">Date Reg.</th>
+                            <th class="text-left border-0 border-blue-800" width="20%" >Actions</th>
+                        </tr>                    
+                    </thead>
+                    <tbody> 
+                        {% for vehicle in vehicles reversed %}
+                            <tr class="border-b">    
+                                <td class="text-center">{{ forloop.counter }}.</td>
+                                <td>{{vehicle.make}}</td>
+                                <td>{{vehicle.model}}</td>
+                                <td>{{vehicle.color}}</td>
+                                <td>{{vehicle.plateno}}</td>
+                                <td>{{vehicle.owner}}</td>
+                                <td>{{vehicle.date|date:"F d, Y" }}</td>
+                                <td>
+                                    <div class="text-sm">
+                                           
+                                            <span>
+                                                <a class='underline' href='vehicle/delete/{{ vehicle.id }}'>Delete</a>
+                                            </span>
+                                    </div>
+                                </td>
+                            </tr>    
+                        
+                        {%  endfor  %}
+    
+                    </tbody>
+                    
+                </table>
+                 
+            </div>
+
+            <!-- end of content -->
+
+            
+    </div>
+
+    
+    
+</body>
+</html>

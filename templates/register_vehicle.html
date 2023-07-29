@@ -1,0 +1,125 @@
+{% load static %}
+
+<!-- index.html -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Other head elements -->
+    
+    <title>Traffic Volume Detection Using Wireless Sensor Network</title>
+    <!-- Other head elements -->
+    <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            laravel: "#ef3b2d",
+                        },
+                    },
+                },
+            };
+    </script>
+</head>
+<body>
+    <div class="flex flex-col bg-blue-500 text-white py-5 justify-center items-center"
+         style="background: url('https://www.digi.com/getattachment/applications/traffic-management/background.jpg');"
+         >
+        <div class="flex w-full mt-10 bg-blue-400 opacity-30 py-3 justify-center">
+            <h1 class="text-4xl text-white">
+                Traffic Volume Detection Using Wireless Sensor Network
+            </h1>
+        </div>        
+    </div>
+
+    <div class="flex container border-0 justify-center py-10">
+            <div class="flex flex-col w-3/4">
+                    <div class="flex flex-row justify-between border-b py-3">
+                            <div>
+                                    <h1 class="text-2xl">Register Vehicle</h1>
+                            </div>
+                            <div>
+                                   <a class='font-semibold underline text-blue-600' href="home">Home</a> | 
+                                   <a class='font-semibold underline text-blue-600' href="vehicles">Vehicles</a>
+                            </div>                         
+                    </div>
+
+                    <div class="flex flex-col border-0 mt-5">
+                            {% for message in messages %}
+                                <div class="py-1 text-red-500 font-semibold">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+                            <form method="POST" action="register_vehicle" class="w-[40%]">
+                                {% csrf_token %}
+
+                                <div class="flex flex-col">
+                                    <label
+                                        for="make" class="py-1 text-sm">
+                                        Make
+                                    </label>
+                                    <input type="text" name="make" class="border rounded 
+                                                                                   border-gray-400 py-3 px-3" required />
+                                </div>
+
+                                <div class="flex flex-col mt-2">
+                                    <label
+                                        for="model" class="py-1 text-sm">
+                                        Model
+                                    </label>
+                                    <input type="text" name="model" class="border rounded 
+                                                                                   border-gray-400 py-3 px-3" required />
+                                </div>
+
+                                <div class="flex flex-col mt-2">
+                                    <label
+                                        for="color" class="py-1 text-sm">
+                                        Color
+                                    </label>
+                                    <input type="text" name="color" class="border rounded 
+                                                                                   border-gray-400 py-3 px-3" required />
+                                </div>
+
+                                <div class="flex flex-col mt-2">
+                                    <label
+                                        for="plateno" class="py-1 text-sm">
+                                        Plate No.
+                                    </label>
+                                    <input type="text" name="plateno" class="border rounded 
+                                                                                   border-gray-400 py-3 px-3" required />
+                                </div>
+
+
+                                <div class="flex flex-col mt-2">
+                                    <label
+                                        for="owner" class="py-1 text-sm">
+                                        Owner
+                                    </label>
+                                    <input type="text" name="owner" class="border rounded 
+                                                                                   border-gray-400 py-3 px-3" required />
+                                </div>
+
+
+
+                                
+                                <div class="flex justify-end">
+                                    <button class="bg-blue-500 bg-rounded py-2 px-3 rounded-lg text-white mt-1">
+                                        Register
+                                   </button>
+                                </div>
+                                
+                               
+
+                            </form>
+                    </div>
+
+            </div>
+    </div>
+
+    
+    
+</body>
+</html>

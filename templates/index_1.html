@@ -1,0 +1,21 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+<h1>
+    How are you doing today, {{ name }}?
+    <br/>
+    I learnt you are {{ age }} years old and an {{  nationality }}
+</h1>
+<img src="https://gazettengr.com/wp-content/uploads/C8F6BD71-4A9A-4810-A137-1C2BE5B64FA1-scaled.jpeg"
+     width="400px"/>
+
+
+<br/><br/>
+<form name="myform" action="counter" method="POST">
+    {% csrf_token %}
+    <textarea name="words" rows="5" cols="100"></textarea>
+    <br/>
+    <input type="submit">   
+
+
+</form>
